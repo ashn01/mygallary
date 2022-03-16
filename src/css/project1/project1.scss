@@ -67,10 +67,6 @@
             animation-delay: (random(620)+200)/100 + s;
             width: random(90)+100 + px;
         }
-        &:nth-child(8){
-            animation-delay: (random(320)+400)/100 + s;
-            width: random(130)+100 + px;
-        }
     }
 }
 
