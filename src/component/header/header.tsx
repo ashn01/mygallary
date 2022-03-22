@@ -1,16 +1,24 @@
-import react from 'react'
-import { Link } from 'react-router-dom'
+import react, { useEffect, useState } from 'react'
+import { Link, useLocation, useSearchParams } from 'react-router-dom'
 import '../../css/header/header.scss'
 
-export default function header(){
+export default function Header(){
+    const params =new URLSearchParams(useLocation().search) 
+    const [id, setId] = useState<string|null>(null)
+
+    useEffect(()=>{
+        setId(params.get('id'))
+    },[params])
+
+
     return (
     <div className="header">
         <ul>
             <li>{/* need fix, get current url and calculate what is next and previous */}
-                <Link to="/">previous</Link>
+                <Link to={`/project?id=${id!=null&&parseInt(id)-1}`}>previous</Link>
             </li>
             <li>
-                <Link to="/project2">next</Link>
+                <Link to={`/project?id=${id!=null&&parseInt(id)+1}`}>next</Link>
             </li>
         </ul>
     </div>

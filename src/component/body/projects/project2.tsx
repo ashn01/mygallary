@@ -17,10 +17,16 @@ export default function Project2(){
 
         renderer.setSize(window.innerWidth, window.innerHeight);
         
-        const geometry = new THREE.BoxGeometry();
-        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        // add light
+        scene.add(new THREE.AmbientLight(0x123123,1));
+        let light = new THREE.PointLight(0xffffff,1);
+        camera.add(light)
+
+        const geometry = new THREE.ConeGeometry();
+        const material = new THREE.MeshPhongMaterial();
         const cube = new THREE.Mesh(geometry, material);
         scene.add(cube);
+
 
         camera.position.z = 5;
 
